@@ -1,0 +1,14 @@
+body{
+  background-color: #2D2D2D;
+}
+#particle_container{
+  position: absolute;
+  z-index: 10;
+  top: 10%;
+  left: 10%;
+  right: 10%;
+  bottom: 10%;
+  display: block;
+  background-color: #4CC2FF40;
+  border: 1px solid #4CC2FF;
+}
