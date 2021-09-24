@@ -13,7 +13,7 @@ body{
   border: 1px solid #4CC2FF;
 }
 
-.particle{
+#particle_container > div{
   position: absolute;
   z-index: 1;
   top: 0px;
@@ -22,4 +22,5 @@ body{
   width: 3px;
   height: 3px;
   border: 1px solid white;
+  box-sizing: border-box;
 }
