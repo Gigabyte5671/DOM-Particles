@@ -7,7 +7,7 @@ function particle(creation_tick,start,end,duration,lifespan){
   this.lifespan = lifespan,
   this.appearance_params = {
     scale: [0.5,1],
-    opacity: [1,0]
+    opacity: [1,0.1]
   }
 }
 
@@ -42,8 +42,8 @@ window.requestAnimationFrame(doParticles);
 
 
 function createEmitter(e){
-  var max_particles = 10;
-  var max_distance = 50;
+  var max_particles = 30;
+  var max_distance = 500;
   //var start = [e.clientX, e.clientY];
   var start = [e.layerX, e.layerY];
   
