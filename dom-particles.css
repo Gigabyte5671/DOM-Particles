@@ -1,5 +1,6 @@
 body{
   background-color: #2D2D2D;
+  overflow: hidden;
 }
 #particle_container{
   position: absolute;
@@ -22,5 +23,6 @@ body{
   width: 3px;
   height: 3px;
   border: 1px solid white;
+  border-radius: 50%;
   box-sizing: border-box;
 }
