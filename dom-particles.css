@@ -12,3 +12,14 @@ body{
   background-color: #4CC2FF40;
   border: 1px solid #4CC2FF;
 }
+
+.particle{
+  position: absolute;
+  z-index: 1;
+  top: 0px;
+  left: 0px;
+  display: block;
+  width: 3px;
+  height: 3px;
+  border: 1px solid white;
+}
