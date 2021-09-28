@@ -7,7 +7,7 @@ function particle(creation_tick,start,end,duration,lifespan){
   this.lifespan = lifespan,
   this.appearance_params = {
     scale: [0.5,1],
-    opacity: [1,0.1]
+    opacity: [1,0]
   }
 }
 
@@ -22,7 +22,7 @@ function doParticles(TS){
     
     particles.forEach(function(p, i){
       if(p.age < 100){
-        drawParticle(lerpXY(p.start, p.end, (p.age / 100)), (p.age / 100), p.appearance_params);
+        drawParticle(lerp(p.start, p.end, (p.age / 100)), (p.age / 100), p.appearance_params);
         p.age++;
         p.age++;
         p.age++;
@@ -42,8 +42,8 @@ window.requestAnimationFrame(doParticles);
 
 
 function createEmitter(e){
-  var max_particles = 30;
-  var max_distance = 500;
+  var max_particles = 100;
+  var max_distance = 300;
   //var start = [e.clientX, e.clientY];
   var start = [e.layerX, e.layerY];
   
@@ -53,8 +53,8 @@ function createEmitter(e){
 }
 function createParticle(start, max_distance){
   var creation_tick = tick;
-  var ofs = [start[0],start[1]]; //This has to be a thing for some reason...
-  var end = polarToCartesian((Math.random() * 360), (Math.random() * max_distance));
+  var ofs = [start[0],start[1]];
+  var end = polarToCartesian((Math.random() * 360), (Math.random() * max_distance), ofs);
   var duration = 100;
   var lifespan = 100;
   
@@ -68,14 +68,14 @@ function drawParticle(pos, age, appearance_params){
   var node = document.createElement("div");
   node.style.left = pos[0] + "px";
   node.style.top = pos[1] + "px";
-  node.style.opacity = lerp(appearance_params.opacity[0], appearance_params.opacity[1], age);
+  node.style.opacity = lerp([appearance_params.opacity[0]], [appearance_params.opacity[1]], age);
   
   particle_container.appendChild(node);
 }
 
 
-function polarToCartesian(angle, length){
-  var output = [0,0];
+function polarToCartesian(angle, length, offset){
+  var output = [offset[0],offset[1]];
   var rad = degToRad(angle);
   output[0] += length * Math.cos(rad);
   output[1] += length * Math.sin(rad);
@@ -84,19 +84,22 @@ function polarToCartesian(angle, length){
 function degToRad(deg){
   return deg * (Math.PI / 180);
 }
+
+
 function lerp(P, Q, t){
-  var output = 0.0;
+  var output = [];
   if(t < 0){t = 0;}
   if(t > 1){t = 1;}
-  if(P < Q){output = P + (t * Q);}else{output = P - (t * Q);} //Fix this math. This is also the reason that the particles will never cross the container boundaries.
-  //console.log(output);
-  return output;
-}
-function lerpXY(P, Q, t){
-  var output = [0,0];
-  if(t < 0){t = 0;}
-  if(t > 1){t = 1;}
-  if(P[0] < Q[0]){output[0] = P[0] + (t * Q[0]);}else{output[0] = P[0] - (t * Q[0]);}
-  if(P[1] < Q[1]){output[1] = P[1] + (t * Q[1]);}else{output[1] = P[1] - (t * Q[1]);}
+  
+  var i = 0;
+  while(i < P.length){
+    output.push(
+    
+      P[i] + (t * (Q[i] - P[i]))
+      
+    );
+    i++;
+  }
+  console.log(output);
   return output;
 }
