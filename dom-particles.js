@@ -100,6 +100,5 @@ function lerp(P, Q, t){
     );
     i++;
   }
-  console.log(output);
   return output;
 }
