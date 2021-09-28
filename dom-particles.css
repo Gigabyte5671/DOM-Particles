@@ -115,6 +115,7 @@ p{
   color: #FFFFFF;
   /* background-color: #4CC2FF40; */
   /* border: 1px solid #4CC2FF; */
+  overflow: hidden;
 }
 
 #particle_container > div{
