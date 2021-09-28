@@ -44,8 +44,8 @@ window.requestAnimationFrame(doParticles);
 function createEmitter(e){
   var max_particles = 100;
   var max_distance = 300;
-  //var start = [e.clientX, e.clientY];
-  var start = [e.layerX, e.layerY];
+  var start = [e.clientX, e.clientY];
+  //var start = [e.layerX, e.layerY];
   
   for(let i = 0; i < max_particles; i++){
     createParticle(start, max_distance);
