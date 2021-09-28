@@ -102,3 +102,9 @@ function lerp(P, Q, t){
   }
   return output;
 }
+
+
+
+function changeColour(c){
+  document.getElementById("particle_container").style.color = "#" + c;
+}

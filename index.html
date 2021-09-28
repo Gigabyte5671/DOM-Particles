@@ -3,16 +3,41 @@
   <head>
     <meta charset="UTF-8">
     <title>DOM-Particles</title>
-    <meta name="description" content="">
+    <meta property="og:title" content="DOM-Particles">
+    <meta property="og:site_name" content="DOM-Particles">
+    <meta name="description" content="A simple particle engine that runs within the native HTML DOM.">
+    <meta property="og:description" content="A simple particle engine that runs within the native HTML DOM.">
     <meta name="author" content="Gigabyte5671">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:image" content="favicon.webp">
+    <meta name="twitter:image:alt" content="site cover image">
+    <meta name="theme-color" content="#2D2D2D">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="dom-particles.css">
+    <link rel="shortcut icon" href="favicon.webp">
     <script src="dom-particles.js" defer></script>
   </head>
   
   <body>
-    <main>
-      <div id="particle_container" onclick="createEmitter(event)">
+    <main onclick="createEmitter(event)">
+      <h1>DOM-Particles</h1>
+      <h3>A simple particle engine that runs within the native HTML DOM.</h3>
+      <p>Click anywhere on this page to see the effect.</p>
+      <div id="color_picker">
+        <div class="color color-lightblue" onclick="changeColour('1DD5EC')"></div>
+        <div class="color color-blue" onclick="changeColour('1D6DEC')"></div>
+        <div class="color color-darkblue" onclick="changeColour('341DEC')"></div>
+        <div class="color color-purple" onclick="changeColour('9B1DEC')"></div>
+        <div class="color color-pink" onclick="changeColour('EC1DD5')"></div>
+        <div class="color color-magenta" onclick="changeColour('EC1D6E')"></div>
+        <div class="color color-white" onclick="changeColour('FFFFFF')"></div>
       </div>
+      
+      <a id="github_link" href="https://github.com/Gigabyte5671/DOM-Particles" target="_blank"><img src="https://simpleicons.org/icons/github.svg" draggable="false"></a>
     </main>
+    
+    <div id="particle_container">
+    </div>
   </body>
 </html>

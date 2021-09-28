@@ -1,17 +1,120 @@
+html{
+  height: 100%;
+}
 body{
+  height: 100%;
   background-color: #2D2D2D;
   overflow: hidden;
 }
+main{
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  user-select: none;
+}
+
+h1{
+  margin-bottom: 0px;
+  color: white;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 42px;
+  font-weight: 100;
+  opacity: 0.7;
+}
+h3{
+  margin-top: 0px;
+  margin-bottom: 30px;
+  color: white;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 16px;
+  font-weight: 100;
+  text-align: center;
+  opacity: 0.7;
+}
+p{
+  margin-top: 0px;
+  color: white;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 14px;
+  font-weight: 100;
+  text-align: center;
+  opacity: 0.7;
+}
+
+#color_picker{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 320px;
+  min-width: 320px;
+  margin-bottom: 100px;
+}
+#color_picker .color{
+  display: block;
+  width: 28px;
+  height: 28px;
+  margin: 0px 7px 0px 7px;
+  background-color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#color_picker .color-lightblue{
+  background-color: #1DD5EC;
+}
+#color_picker .color-blue{
+  background-color: #1D6DEC;
+}
+#color_picker .color-darkblue{
+  background-color: #341DEC;
+}
+#color_picker .color-purple{
+  background-color: #9B1DEC;
+}
+#color_picker .color-pink{
+  background-color: #EC1DD5;
+}
+#color_picker .color-magenta{
+  background-color: #EC1D6E;
+}
+#color_picker .color-white{
+  background-color: #FFFFFF;
+}
+
+#github_link{
+  position: absolute;
+  z-index: 1;
+  bottom: 26px;
+  display: block;
+  width: 26px;
+  height: 26px;
+  opacity: 0.7;
+  filter: invert(1);
+  transition: 0.1s ease all;
+}
+#github_link:hover{
+  opacity: 1;
+}
+
+
+
 #particle_container{
   position: absolute;
-  z-index: 10;
-  top: 10%;
-  left: 10%;
-  right: 10%;
-  bottom: 10%;
+  z-index: 1;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
   display: block;
-  background-color: #4CC2FF40;
-  border: 1px solid #4CC2FF;
+  color: #FFFFFF;
+  /* background-color: #4CC2FF40; */
+  /* border: 1px solid #4CC2FF; */
 }
 
 #particle_container > div{
@@ -22,7 +125,8 @@ body{
   display: block;
   width: 3px;
   height: 3px;
-  border: 1px solid white;
+  color: inherit;
+  border: 1px solid currentcolor;
   border-radius: 50%;
   box-sizing: border-box;
 }
