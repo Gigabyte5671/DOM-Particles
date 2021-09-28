@@ -28,9 +28,9 @@ function doParticles(TS){
         p.age++;
       }
       
-      /*if(tick > p.creation_tick + p.lifespan){
+      if(tick > p.creation_tick + p.lifespan){
         particles.splice(i,1);
-      }*/
+      }
       
     });
   }
