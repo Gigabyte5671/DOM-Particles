@@ -1,12 +1,13 @@
-function particle(creation_tick,start,end,duration,lifespan){
+function particle(creation_tick,start,end,duration,lifespan,velocity){
   this.creation_tick = creation_tick,
   this.start = start,
   this.age = 0;
   this.end = end,
   this.duration = duration,
   this.lifespan = lifespan,
+  this.velocity = velocity,
   this.appearance_params = {
-    scale: [0.5,1],
+    scale: [1.5,0],
     opacity: [1,0]
   }
 }
@@ -21,11 +22,9 @@ function doParticles(TS){
     particle_container.innerHTML = "";
     
     particles.forEach(function(p, i){
-      if(p.age < 100){
-        drawParticle(lerp(p.start, p.end, (p.age / 100)), (p.age / 100), p.appearance_params);
-        p.age++;
-        p.age++;
-        p.age++;
+      if(p.age < p.lifespan){
+        drawParticle(lerp(p.start, p.end, (p.age / p.lifespan)), (p.age / p.lifespan), p.appearance_params);
+        p.age += p.velocity;
       }
       
       if(tick > p.creation_tick + p.lifespan){
@@ -57,8 +56,9 @@ function createParticle(start, max_distance){
   var end = polarToCartesian((Math.random() * 360), (Math.random() * max_distance), ofs);
   var duration = 100;
   var lifespan = 100;
+  var velocity = 3;
   
-  var part = new particle(creation_tick,start,end,duration,lifespan);
+  var part = new particle(creation_tick,start,end,duration,lifespan,velocity);
   particles.push(part);
 }
 
