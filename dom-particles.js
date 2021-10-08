@@ -62,7 +62,6 @@ function createParticle(start, max_distance){
   particles.push(part);
 }
 
-
 function drawParticle(pos, age, appearance_params){
   //var fragment_node = document.createDocumentFragment();
   var node = document.createElement("div");
@@ -72,7 +71,6 @@ function drawParticle(pos, age, appearance_params){
   
   particle_container.appendChild(node);
 }
-
 
 function polarToCartesian(angle, length, offset){
   var output = [offset[0],offset[1]];
@@ -85,7 +83,6 @@ function degToRad(deg){
   return deg * (Math.PI / 180);
 }
 
-
 function lerp(P, Q, t){
   var output = [];
   if(t < 0){t = 0;}
@@ -93,17 +90,11 @@ function lerp(P, Q, t){
   
   var i = 0;
   while(i < P.length){
-    output.push(
-    
-      P[i] + (t * (Q[i] - P[i]))
-      
-    );
+    output.push(P[i] + (t * (Q[i] - P[i])));
     i++;
   }
   return output;
 }
-
-
 
 function changeColour(c){
   document.getElementById("particle_container").style.color = "#" + c;
