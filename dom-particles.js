@@ -67,7 +67,14 @@ function drawParticle(pos, age, appearance_params){
   var node = document.createElement("div");
   node.style.left = pos[0] + "px";
   node.style.top = pos[1] + "px";
-  node.style.opacity = lerp([appearance_params.opacity[0]], [appearance_params.opacity[1]], age);
+  var transform_properties = ["translate", "translateX", "translateY", "scale", "scaleX", "scaleY", "scaleZ", "rotate", "rotateX", "rotateY", "rotateZ"];
+  Object.keys(appearance_params).forEach(function(k){
+    if(transform_properties.includes(k)){
+      node.style.transform = k + "(" + lerp([appearance_params[k][0]], [appearance_params[k][1]], age) + ")";
+    }else{
+      node.style[k] = lerp([appearance_params[k][0]], [appearance_params[k][1]], age);
+    }
+  });
   
   particle_container.appendChild(node);
 }
