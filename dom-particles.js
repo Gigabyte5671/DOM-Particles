@@ -17,23 +17,30 @@ var particles = [];
 var tick = 0;
 
 
+var start_timestamp, previous_timestamp;
 function doParticles(TS){
-  if(tick % 1 === 0){
+  if(start_timestamp === undefined){
+    start_timestamp = TS;
+  }
+  const elapsed = TS - previous_timestamp;
+
+  // if(tick % 1 === 0){
+  if(previous_timestamp !== TS){
     particle_container.innerHTML = "";
     
     particles.forEach(function(p, i){
       if(p.age < p.lifespan){
         drawParticle(lerp(p.start, p.end, (p.age / p.lifespan)), (p.age / p.lifespan), p.appearance_params);
-        p.age += p.velocity;
+        p.age += p.velocity * (elapsed * 0.05);
       }
       
       if(tick > p.creation_tick + p.lifespan){
         particles.splice(i,1);
       }
-      
     });
   }
   
+  previous_timestamp = TS;
   tick++;
   window.requestAnimationFrame(doParticles);
 }
