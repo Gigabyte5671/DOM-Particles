@@ -22,7 +22,7 @@ function doParticles(TS){
   if(start_timestamp === undefined){
     start_timestamp = TS;
   }
-  const elapsed = TS - start_timestamp;
+  const elapsed = TS - previous_timestamp;
 
   // if(tick % 1 === 0){
   if(previous_timestamp !== TS){
@@ -31,7 +31,7 @@ function doParticles(TS){
     particles.forEach(function(p, i){
       if(p.age < p.lifespan){
         drawParticle(lerp(p.start, p.end, (p.age / p.lifespan)), (p.age / p.lifespan), p.appearance_params);
-        p.age += p.velocity * elapsed;
+        p.age += p.velocity * (elapsed * 0.05);
       }
       
       if(tick > p.creation_tick + p.lifespan){
