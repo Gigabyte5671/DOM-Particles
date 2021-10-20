@@ -17,8 +17,15 @@ var particles = [];
 var tick = 0;
 
 
+var start_timestamp, previous_timestamp;
 function doParticles(TS){
-  if(tick % 1 === 0){
+  if(start_timestamp === undefined){
+    start_timestamp = TS;
+  }
+  const elapsed = TS - start_timestamp;
+
+  // if(tick % 1 === 0){
+  if(previous_timestamp !== TS){
     particle_container.innerHTML = "";
     
     particles.forEach(function(p, i){
@@ -30,25 +37,10 @@ function doParticles(TS){
       if(tick > p.creation_tick + p.lifespan){
         particles.splice(i,1);
       }
-
-      if (start === undefined){
-        start = timestamp;
-      }
-      const elapsed = timestamp - start;
-
-      if (previousTimeStamp !== timestamp) {
-        // Math.min() is used here to make sure the element stops at exactly 200px
-        const count = Math.min(0.1 * elapsed, 200);
-        element.style.transform = 'translateX(' + count + 'px)';
-      }
-
-      if (elapsed < 2000) { // Stop the animation after 2 seconds
-        previousTimeStamp = timestamp
-        window.requestAnimationFrame(step);
-      } 
     });
   }
   
+  previous_timestamp = TS;
   tick++;
   window.requestAnimationFrame(doParticles);
 }
