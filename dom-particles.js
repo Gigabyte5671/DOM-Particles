@@ -31,7 +31,7 @@ function doParticles(TS){
     particles.forEach(function(p, i){
       if(p.age < p.lifespan){
         drawParticle(lerp(p.start, p.end, (p.age / p.lifespan)), (p.age / p.lifespan), p.appearance_params);
-        p.age += p.velocity;
+        p.age += p.velocity * elapsed;
       }
       
       if(tick > p.creation_tick + p.lifespan){
