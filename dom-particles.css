@@ -10,6 +10,7 @@
   /* background-color: #4CC2FF40; */
   /* border: 1px solid #4CC2FF; */
   overflow: hidden;
+  pointer-events: none;
 }
 
 #particle_container > div{
