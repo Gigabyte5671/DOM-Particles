@@ -111,5 +111,5 @@ function lerp(P, Q, t){
 }
 
 function changeColour(c){
-  document.getElementById("particle_container").style.color = "#" + c;
+  document.getElementById("particle_container").style.color = (c.includes("#") ? c : "#" + c);
 }
